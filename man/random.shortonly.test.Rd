@@ -9,12 +9,13 @@
   to evaluate the performance of the portfolio generation algorithm.
 }
 \usage{
-random.shortonly.test(n = 2, k = n, x.t = 1, x.l = 0, 
+random.shortonly.test(n = 2, k = n, segments = NULL, x.t = 1, x.l = 0, 
 x.u = x.t, max.iter = 1000)
 }
 \arguments{
   \item{n}{ An integer value for the number of investments in the portfolio }
   \item{k}{ An integer value for the number of non zero weights }
+  \item{segments}{ A vector or list of vectors that defines the portfolio segments }
   \item{x.t}{ Numeric value for the sum of the absolute value of the investment weights }
   \item{x.l}{ Numeric value for the lower bound on the absolute value of an investment weight }
   \item{x.u}{ Numeric value for the upper bound on the absolute value of an investment weight }
@@ -31,7 +32,7 @@ x.u = x.t, max.iter = 1000)
   \item{x }{An \eqn{n \times 1}  numerical vector of investment weights}
   \item{iter }{An integer value for the number of iterations used to obtain the investment weights}
 }
-\author{ Frederick Novomestky \email{fnovomes@poly.edu} }
+\author{ Frederick Novomestky \email{fn334@nyu.edu} }
 \seealso{
  \code{\link{random.shortonly}}
 }

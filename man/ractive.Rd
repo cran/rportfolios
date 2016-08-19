@@ -8,13 +8,15 @@
   The number of non zero positions in the long short portfolios is k.
 }
 \usage{
-ractive(m, x.b, x.g, k = length(x.b), max.iter = 2000, eps = 0.001)
+ractive(m, x.b, x.g, k = length(x.b), segments = NULL, max.iter = 2000, 
+eps = 0.001)
 }
 \arguments{
   \item{m}{ A positive integer value for the number of portfolios in the sample }
   \item{x.b}{ A numeric vector with the investment weights in the benchmark portfolio }
   \item{x.g}{ A positive numeric value for the gross notional exposure in the long short portfolio }
   \item{k}{ A positive integer value for the number of non zero positions in the long short portfolio }
+  \item{segments}{ A vector or list of vectors that defines the portfolio segments }
   \item{max.iter}{ A positive integer value for the maximum iterations for the long short portfolio }
   \item{eps}{ A small positive real value for the convergence criteria for the gross notional exposure }
 }
@@ -39,7 +41,7 @@ Scherer, B., 2007. \emph{Portfolio Construction and Risk Budgeting}, Third Editi
 London, UK.
 
 }
-\author{ Frederick Novomestky \email{fnovomes@poly.edu} }
+\author{ Frederick Novomestky \email{fn334@nyu.edu} }
 \seealso{
   \code{\link{random.active}}
 }

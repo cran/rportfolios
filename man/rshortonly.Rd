@@ -7,13 +7,14 @@
   and the sum of the absolute value of weights equals a given amount.
 }
 \usage{
-rshortonly(m, n = 2, k = n, x.t = 1, x.l = 0, 
+rshortonly(m, n = 2, k = n, segments=NULL, x.t = 1, x.l = 0, 
 x.u = x.t, max.iter = 1000)
 }
 \arguments{
   \item{m}{ A positive integer value for the number of portfolios }
   \item{n}{ A positive integer value for the number of investments in the portfolio }
   \item{k}{ A positive integer value for the number of non zero weights }
+  \item{segments}{ A vector or list of vectors that defines the portfolio segments }
   \item{x.t}{ A positive numeric value for the sum of the absolute value of investment weights }
   \item{x.l}{ A positive numeric value for the lower bound on the absolute value of investment weights }
   \item{x.u}{ A positive numeric value for the upper bound on the absolute value of investment weights }
@@ -28,7 +29,7 @@ x.u = x.t, max.iter = 1000)
   A numeric \eqn{imes n} matrix.  The rows are the portfolios and
   the columns are the investment weights for each portfolio
 }
-\author{ Frederick Novomestky \email{fnovomes@poly.edu} }
+\author{ Frederick Novomestky \email{fn334@nyu.edu} }
 \seealso{
   \code{\link{random.shortonly}}
 }

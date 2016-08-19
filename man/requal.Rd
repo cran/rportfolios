@@ -6,7 +6,7 @@
   k non-zero, equal weights and the sum of the weights equals \eqn{x_t}.
 }
 \usage{
-requal(m, n = 2, k, x.t=1)
+requal(m, n = 2, k = n, x.t=1)
 }
 \arguments{
   \item{m}{ A positive integer for the number of portfolios in the sample }
@@ -52,8 +52,9 @@ Benjelloun, H. and Siddiqi, 2006. Direct diversification with small stock portfo
 
 Benjelloun, H., 2010. Evans and Archer - forty years later, \emph{Investment Management and
 Financial Innovation}, 7(1), 98-104.
+
 }
-\author{ Frederick Novomestky \email{fnovomes@poly.edu} }
+\author{ Frederick Novomestky \email{fn334@nyu.edu} }
 \seealso{
   \code{\link{random.equal}}
 }

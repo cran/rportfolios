@@ -6,23 +6,24 @@
   positive equal weights.  The weights sum to the given value \eqn{x_t}.
 }
 \usage{
-random.equal(n = 2, k, x.t=1)
+random.equal(n = 2, k = n, segments = NULL, x.t = 1)
 }
 \arguments{
   \item{n}{ A positive integer for the number of investments in the portfolio }
   \item{k}{ A positive integer for the number of investments with positive equal weights }
+  \item{segments}{ A vector or list of vectors that defines the portfolio segments }
   \item{x.t}{ A positive numeric value for the sum of weights }
 }
 \details{
   The R function \code{sample} is used to generate a simple random sample without replacement
   of k values from the integers \eqn{1,2, \ldots ,n}.  These are the subscripts into 
-  an \eqn{n \times 1} zero vector to assign
-  the equal weight \eqn{x_t / k}.
+  an \eqn{n \times 1} zero vector to assign the equal weight \eqn{x_t / k}.
 }
 \value{
   An \eqn{n \times 1} numeric vector of investment weights for the equal weighted portfolio.
+  The weights are proportions of invested capital.
 }
-\author{ Frederick Novomestky \email{fnovomes@poly.edu} }
+\author{ Frederick Novomestky \email{fn334@nyu.edu} }
 \examples{
 x <- random.equal( 30, 5 )
 }

@@ -1,4 +1,5 @@
-rlongshort <- function( m, n=2, k=n, x.t.long=1, x.t.short=x.t.long , max.iter=2000, eps=1e-3 )
+rlongshort <- function( m, n=2, k=n, segments=NULL, x.t.long=1, x.t.short=x.t.long , 
+    max.iter=2000, eps = 0.001 )
 {
 ###
 ### This function generates m long short random portfolios with n investments where
@@ -11,26 +12,20 @@ rlongshort <- function( m, n=2, k=n, x.t.long=1, x.t.short=x.t.long , max.iter=2
 ### k = a positive integer value for the number of non-zero positions
 ### x.t.long = a numeric value for the sum of the long exposures in the long portfolio
 ### x.t.short = a numeric value for the sum of the short exposures in the short portfolio
+### p.long = positive real value for the probability that an investment selected at random
+###          has a positive exposure
 ### max.iter = a positive integer value for the maximum iterations in the rejection method
 ### eps = a positive numeric value for the acceptance rejection method based on gross notional exposure
 ###
 ### private function
 ###
-    by.case <- function( case, number, size, total.long, 
+    by.case <- function( case, number, size, theseSegments, total.long, 
         total.short, iterations, epsilon )
     {
-        return( random.longshort( n=number, k=size, x.t.long=total.long, 
-            x.t.short=total.short, max.iter=iterations, eps=epsilon ) )
+        return( random.longshort( n=number, k=size, segments=theseSegments, x.t.long=total.long, 
+            x.t.short=total.short, max.iter=iterations, eps = epsilon ) )
     }
-###
-### validate arguments
-###
-    if ( x.t.long < 0 ) {
-        stop( "Argument x.t.long is less than zero" )
-    }
-    if ( x.t.short < 0 ) {
-        stop( "Argument x.t.short is less than zero" )
-    }
-    weights <- t( sapply( 1:m, by.case, n, k, x.t.long, x.t.short, max.iter, eps ) )
+    weights <- t( sapply( 1:m, by.case, n, k, segments, x.t.long, 
+        x.t.short, max.iter, eps ) )
     return( weights )
 }

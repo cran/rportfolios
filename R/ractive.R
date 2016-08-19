@@ -1,4 +1,5 @@
-ractive <- function( m, x.b, x.g , k=length(x.b ), max.iter=2000, eps=1e-3 )
+ractive <- function( m, x.b, x.g , k=length(x.b ), segments=NULL, 
+    max.iter=2000, eps=0.001 )
 {
 ###
 ### This function generates m long short random portfolios with n investments where
@@ -11,15 +12,15 @@ ractive <- function( m, x.b, x.g , k=length(x.b ), max.iter=2000, eps=1e-3 )
 ### x.g = a numeric value for the gross notional amount
 ### k = a positive integer value for the number of non-zero positions
 ### max.iter = a positive integer value for the maximum iterations in the rejection method
-### eps = a positive numeric value for the acceptance rejection method based on gross notional exposure
 ###
 ### private function
 ###
-    by.case <- function( case, benchmark, gross.notional, size, iterations, epsilon )
+    by.case <- function( case, benchmark, gross.notional, size, theseSegments, 
+        iterations, epsilon )
     {
         return( random.active( x.b=benchmark, x.g=gross.notional, 
-            k=size, max.iter=iterations, eps=epsilon ) )
+            k=size, segments=theseSegments, max.iter=iterations, eps=epsilon ) )
     }
-    weights <- t( sapply( 1:m, by.case, x.b, x.g, k, max.iter, eps ) )
+    weights <- t( sapply( 1:m, by.case, x.b, x.g, k, segments, max.iter, eps ) )
     return( weights )
 }

@@ -4,15 +4,16 @@
 \description{
   This function generates m random general portfolios with n investments each.  There are k positions
   that can be positive or negative.  The probability that a given investment weight is
-  positive is p.  The maximum absolute exposure is x.u which has \eqn{1 / k} as the default
+  positive is p.  The maximum absolute exposure is x.u which has \eqn{1} as the default
 }
 \usage{
-rgeneral(m, n = 2, k = n, p = 0.5, x.u = 1/k)
+rgeneral(m, n = 2, k = n, segments = NULL, p = 0.5, x.u = 1)
 }
 \arguments{
   \item{m}{ A positive integer value for the number of portfolios }
   \item{n}{ A positive integer value for the number of investments in the portfolio }
   \item{k}{ A positive integer value for the number of non-zero investment positions }
+  \item{segments}{ A vector or list of vectors that defines the portfolio segments }
   \item{p}{ A positive numeric value for the probability that a non-zero position is positive }
   \item{x.u}{ A positive numeric value for the maximum absolute exposure to an investment }
 }
@@ -25,7 +26,7 @@ rgeneral(m, n = 2, k = n, p = 0.5, x.u = 1/k)
   An \eqn{m \times n} numeric matrix.  The rows are the portfolios and
   the columns are the investment weights for each portfolio
 }
-\author{ Frederick Novomestky \email{fnovomes@poly.edu} }
+\author{ Frederick Novomestky \email{fn334@nyu.edu} }
 \seealso{
   \code{\link{random.general}}
 }

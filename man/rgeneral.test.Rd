@@ -4,16 +4,17 @@
 \description{
   This function generates m random general portfolios with n investments each
   that can have k positive or negative.  The probability that a given investment weight is
-  positive is p.  The maximum absolute exposure is x.u which has \eqn{1 / k} as the default
+  positive is p.  The maximum absolute exposure is x.u which has \eqn{1} as the default
   The function is used to evaluate the performance of the portfolio generation algorithm.
 }
 \usage{
-rgeneral.test(m, n = 2, k = n, p = 0.5, x.u = 1/k)
+rgeneral.test(m, n = 2, k = n, segments = NULL, p = 0.5, x.u = 1)
 }
 \arguments{
   \item{m}{ A positive integer value for the number of portfolios }
   \item{n}{ A positive integer value for the number of investments in the portfolio }
   \item{k}{ A positive integer value for the number of non-zero long and short positions }
+  \item{segments}{ A vector or list of vectors that defines the portfolio segments }
   \item{p}{ A positive numeric value for the probability that a position is positive }
   \item{x.u}{ A positive numeric value for the maximum absolute exposure to an investment }
 }
@@ -29,7 +30,7 @@ rgeneral.test(m, n = 2, k = n, p = 0.5, x.u = 1/k)
   \item{iters }{An \eqn{m \times 1} integer vector for the number of iterations 
   used to obtain the investment weights}
 }
-\author{ Frederick Novomestky \email{fnovomes@poly.edu} }
+\author{ Frederick Novomestky \email{fn334@nyu.edu} }
 \seealso{
   \code{\link{random.general.test}}
 }

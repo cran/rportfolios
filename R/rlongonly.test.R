@@ -1,4 +1,4 @@
-rlongonly.test <- function( m, n=2, k=n, x.t=1, x.l=0, x.u=x.t, max.iter=1000 )
+rlongonly.test <- function( m, n=2, k=n, segments=NULL, x.t=1, x.l=0, x.u=x.t, max.iter=1000 )
 {
 ###
 ### This function generates m long only random portfolios with n investments where
@@ -8,30 +8,26 @@ rlongonly.test <- function( m, n=2, k=n, x.t=1, x.l=0, x.u=x.t, max.iter=1000 )
 ### Arguments
 ### m = a positive integer value for the number of portfolios to be generated
 ### m = a positive integer value for the number of investments in a portfolio
+### k = a positive integer value for the number of non zero weights
+### segments = a vector or list of investment indices that defines portfolio segments
 ### x.t = a numeric value for the sum of the investment weights
 ### x.l = a numeric value for the lower bound for each weight
 ### x.u = a numeric value for the upper bound for each weight
 ### max.iter = a positive integer value for the maximum iterations in the rejection method
 ###
+    if ( missing( m ) )
+        stop( "Argument 'm' is missing" )
+    if ( m <= 0 )
+        stop( "Argument 'm' is not positive" )
+###
 ### private function
 ###
-    by.case <- function( case, number, size, total, lower, upper, iterations )
+    by.case <- function( case, number, size, theseSegments, total, lower, upper, iterations )
     {
-        return( random.longonly.test( n=number, k=size, x.t=total, x.l=lower, x.u=upper, max.iter=iterations ) )
+        return( random.longonly.test( n=number, k=size, segments=theseSegments, x.t=total, 
+            x.l=lower, x.u=upper, max.iter=iterations ) )
     }
-###
-### validate arguments
-###
-    if ( x.l >= x.u ) {
-        stop( "Argument x.l is greater than or equal to argument x.u" )
-    }
-    if ( x.l < 0 ) {
-        stop( "Argument x.l is less than zero" )
-    }
-    if ( x.u < 0 ) {
-        stop( "Argument x.u is less than zero" )
-    }
-    results <- lapply( 1:m, by.case, n, k, x.t, x.l, x.u, max.iter )
+    results <- lapply( 1:m, by.case, n, k, segments, x.t, x.l, x.u, max.iter )
 ###
 ### separate the investment weights and iterations into a matrix and vector
 ###

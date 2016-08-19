@@ -4,28 +4,28 @@
 \description{
   This function generates m random equal portfolios with
   k non-zero, equal weights and the sum of the weights equals \eqn{x_t}.
-  The function is used to evaluate the performance of the portfolio generation algorithm.
+  This function is used to evaluate the computation performance
+  of the portfolio generation algorithm
 }
 \usage{
-requal.test(m, n = 2, k, x.t = 1)
+requal.test(m, n = 2, k = n, x.t = 1)
 }
 \arguments{
   \item{m}{ A positive integer for the number of portfolios in the sample }
-  \item{n}{ A positive integer for the number of investments in the portfolio }
-  \item{k}{ A positive integer for the number of non-zero investment weights }
-  \item{x.t}{ The sum of the investment weights }
+  \item{n}{ A positive integer for the number of non-zero equal weights }
+  \item{k}{ A positive integer for the number of investments in the portfolio }
+  \item{x.t}{ A positive number for the sum of the weights }
 }
 \details{
-  The function executes the function \code{random.equal.test} using the R function
-  \code{lapply}.  The result which is a list contains the investment weight vectors and number
-  of iterations.  Thse data are stored in a matrix of investment weights and a vector
-  of iterations.  These arrays are returned as a list.
+  The function executes the function \code{random.equal} using the R function
+  sapply.  The result returned is the transpose of the matrix generated in the previous
+  step.  This is not an iterative function so that the number of iterations is 1
+  for all of the portfolios.
 }
 \value{
   A list with two named components.
-  \item{xmatrix }{An \eqn{m \times n}  numerical matrix of investment weights}
-  \item{iters }{An \eqn{m \times 1} integer vector for the number of iterations used 
-  to obtain the investment weights}
+  \item{xmatrix }{An \eqn{m \times n} matrix of investment weights}
+  \item{iters }{An \eqn{m \times 1} vector with the number of iterations used to obtain the portfolios}
 }
 \references{
 Evans, J. and S. Archer, 1968. Diversification and the Reduction of Risk: An Empirical Analysis,
@@ -56,16 +56,16 @@ Benjelloun, H. and Siddiqi, 2006. Direct diversification with small stock portfo
 
 Benjelloun, H., 2010. Evans and Archer - forty years later, \emph{Investment Management and
 Financial Innovation}, 7(1), 98-104.
+
 }
-\author{ Frederick Novomestky \email{fnovomes@poly.edu} }
+\author{ Frederick Novomestky \email{fn334@nyu.edu} }
 \seealso{
-  \code{\link{random.equal.test}}
+  \code{\link{random.equal}}
 }
 \examples{
 ###
-### generate 100 portfolios with 30 investments of which 5 are equal weights and
-### the remaining are zero
+### generate 100 equal weighted portfolios of 30 investments with 10 non zero positions
 ###
-x.result <- requal.test( 100, 30, 5 )
+result <- requal.test( 100, 30, 10 )
 }
 \keyword{ math }

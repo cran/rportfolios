@@ -1,4 +1,5 @@
-ractive.test <- function( m, x.b, x.g, k=length(x.b), max.iter=2000, eps=1e-3 )
+ractive.test <- function( m, x.b, x.g, k=length(x.b), segments=NULL, 
+    max.iter=2000, eps=0.001 )
 {
 ###
 ### This function generates m long short random portfolios with n investments where
@@ -9,19 +10,20 @@ ractive.test <- function( m, x.b, x.g, k=length(x.b), max.iter=2000, eps=1e-3 )
 ### m = a positive integer value for the number of portfolios to be generated
 ### x.b = a numeric vector with the benchmark investment weights
 ### x.g = a numeric value for the gross notional amount
-### k = a positive integer value for the number of non-zero positions in the long short portfolio
+### k = a positive integer value for the number of non-zero weights in the long short portfolio
+### segments = a vector or list of vectors that defines the portfolio segments
 ### max.iter = a positive integer value for the maximum iterations in the rejection method
 ### eps = a positive numeric value for the acceptance rejection method based on gross notional exposure
 ###
 ### private function
 ###
-    by.case <- function( case, benchmark, gross.notional, size,
+    by.case <- function( case, benchmark, gross.notional, size, theseSegments,
         iterations, epsilon )
     {
-        return( random.active.test( x.b=benchmark, x.g=gross.notional, k=size,
-        max.iter=iterations, eps=epsilon ) )
+        return( random.active.test( x.b=benchmark, x.g=gross.notional, 
+            k=size, segments=theseSegments, max.iter=iterations, eps=epsilon ) )
     }
-    results <- lapply( 1:m, by.case, x.b, x.g, k,  max.iter, eps )
+    results <- lapply( 1:m, by.case, x.b, x.g, k, segments, max.iter, eps )
 ###
 ### separate the investment weights and iterations into a matrix and vector
 ###

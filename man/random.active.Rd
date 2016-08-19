@@ -8,12 +8,14 @@
   The number of non zero positions in the long short portfolio is k.
 }
 \usage{
-random.active(x.b, x.g, k = length( x.b ),  max.iter = 2000, eps = 0.001)
+random.active(x.b, x.g, k = length( x.b ), segments = NULL, max.iter = 2000,
+              eps = 0.001)
 }
 \arguments{
   \item{x.b}{ A numeric vector with the investment weights in the benchmark portfolio }
   \item{x.g}{ A positive numeric value for the gross notional exposure in the long short portfolio }
   \item{k}{ A positive integer value for the number of non zero positions in the long short portfolio }
+  \item{segments}{ A vector or list of vectors that defines the portfolio segments }
   \item{max.iter}{ A positive integer value for the maximum iterations for the long short portfolio }
   \item{eps}{ A small positive real value for the convergence criteria for the gross notional exposure }
 }
@@ -33,7 +35,7 @@ Jacobs, B. I., K. N. Levy and H. M. Markowitz, 2005. Portfolio Optimization with
 Factors, Scenarios and Realist Short Positions, \emph{Operations Research}, July/August 2005,
 586-599.
 }
-\author{ Frederick Novomestky \email{fnovomes@poly.edu} }
+\author{ Frederick Novomestky \email{fn334@nyu.edu} }
 \seealso{ 
   \code{\link{random.longshort}}
 }

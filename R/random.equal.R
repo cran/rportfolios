@@ -1,4 +1,4 @@
-random.equal <- function( n=2, k, x.t=1 )
+random.equal <- function( n=2, k=n, segments = NULL, x.t=1 )
 {
 ###
 ### This function returns an n by 1 vector of investment weights where
@@ -9,10 +9,20 @@ random.equal <- function( n=2, k, x.t=1 )
 ### k = a positive integer value for the number of non-zero investments
 ### x.t = a positive numeric value for the sum of the weights
 ###
-    if ( k >= n )
-       stop( "Argument p is greater than or equal to n" )
-    weight <- x.t / k
-    investments <- sample( 1:n, k, replace=FALSE )
+    if ( k > n )
+       stop( "argument 'k' is greater than 'n'" )
+    if ( is.null( segments ) ) {
+        weight <- x.t / k
+        investments <- sample( 1:n, k, replace=FALSE )
+    }
+    else {
+        segmentInvestments <- collapse.segments( segments )
+        numberInvestments <- length( segmentInvestments )
+        if ( numberInvestments > n || max( segmentInvestments ) > n )
+            stop( "argument 'segments' has investments that are not allowed" )
+        weight <- x.t / numberInvestments
+        investments <- sample( segmentInvestments, numberInvestments, replace = FALSE )
+    }    
     x <- rep( 0, n )
     x[investments] <- weight
     return( x )

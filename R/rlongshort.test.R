@@ -1,4 +1,5 @@
-rlongshort.test <- function( m, n=2, k=n, x.t.long=1, x.t.short=x.t.long , max.iter=2000, eps=1e-3 )
+rlongshort.test <- function( m, n=2, k=n, segments=NULL, x.t.long=1, x.t.short=x.t.long , 
+    max.iter=2000, eps=0.001 )
 {
 ###
 ### This function generates m long short random portfolios with n investments where
@@ -16,23 +17,15 @@ rlongshort.test <- function( m, n=2, k=n, x.t.long=1, x.t.short=x.t.long , max.i
 ###
 ### private function
 ###
-    by.case <- function( case, number, size, total.long, total.short, 
+    by.case <- function( case, number, size, theseSegments, total.long, total.short, 
         iterations, epsilon )
     {
-        return( random.longshort.test( n=number, k=size, x.t.long=total.long,
+        return( random.longshort.test( n=number, k=size, segments=theseSegments, x.t.long=total.long,
             x.t.short=total.short, 
             max.iter=iterations, eps=epsilon ) )
     }
-###
-### validate arguments
-###
-    if ( x.t.long < 0 ) {
-        stop( "Argument x.t.long is less than zero" )
-    }
-    if ( x.t.short < 0 ) {
-        stop( "Argument x.t.short is less than zero" )
-    }
-    results <- t( lapply( 1:m, by.case, n, k, x.t.long, x.t.short, max.iter, eps ) )
+    results <- t( lapply( 1:m, by.case, n, k, segments, x.t.long, 
+        x.t.short, max.iter, eps ) )
 ###
 ### separate the investment weights and iterations into a matrix and vector
 ###

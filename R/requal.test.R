@@ -1,8 +1,8 @@
-requal.test <- function( m, n=2, k, x.t=1 )
+requal.test <- function( m, n=2, k=n, x.t=1 )
 {
 ###
-### This function generates m long only random portfolios with p investments where
-### there are n non-zero equal weights that sum to one.
+### This function generates m long only random portfolios with k investments where
+### there are n non-zero equal weights that sum to x.t
 ###
 ### Arguments
 ### m = a positive integer value for the number of portfolios to be generated
@@ -14,25 +14,15 @@ requal.test <- function( m, n=2, k, x.t=1 )
 ###
     by.case <- function( case, number, size, total )
     {
-        return( random.equal.test( n=number, k=size, x.t=total ) )
+        return( random.equal( n=number, k=size, x.t=total ) )
     }
 ###
 ### validate arguments
 ###
-    results <- lapply( 1:m, by.case, n, k, x.t )
-###
-### separate the investment weights and iterations into a matrix and vector
-###
-    xmatrix <- matrix( 0, nrow=m, ncol=n )
-    iters <- rep( 0, m )
-    for ( case in 1:m ) {
-        thisResult <- results[[case]]
-        iters[case] <- thisResult$iter
-        xmatrix[case,] <- thisResult$x
+    weights <- t( sapply( 1:m, by.case, n, k, x.t ) )
+    if ( n == 1 ) {
+        weights <- t( weights )
     }
-###
-### create a new result list
-###
-    result <- list( xmatrix=xmatrix, iters=iters )
+    result<- list( xmatrix=weights, iters=rep( 1, m ) )
     return( result )
 }

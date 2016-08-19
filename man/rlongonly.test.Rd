@@ -9,13 +9,14 @@
   the algorithm that generates the random portfolios.
 }
 \usage{
-rlongonly.test(m, n = 2, k = n, x.t = 1, x.l = 0, 
+rlongonly.test(m, n = 2, k = n, segments = NULL, x.t = 1, x.l = 0, 
 x.u = x.t, max.iter = 1000)
 }
 \arguments{
   \item{m}{ A positive integer value for the number of portfolios }
   \item{n}{ A positive integer value for the number of investments in each portfolio }
   \item{k}{ A positive integer value for the number of non zero weights }
+  \item{segments}{ A vector or list of vectors that defines the portfolio segments }
   \item{x.t}{ A positive numeric value for the sum of investment weights }
   \item{x.l}{ A positive numeric value for the lower bound of an investment weight }
   \item{x.u}{ A positive numeric value for the upper bound of an investment weight }
@@ -43,7 +44,7 @@ Marsaglia, G. and T. A. Bray, 1964. A convenient method for generating normal va
 Ross, S. M. (2006). \emph{Simulation}, Fourth Edition, Academic Press, New York NY.
 
 }
-\author{ Frederick Novomestky \email{fnovomes@poly.edu} }
+\author{ Frederick Novomestky \email{fn334@nyu.edu} }
 \seealso{
   \code{\link{random.longonly.test}}
 }

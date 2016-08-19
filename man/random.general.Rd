@@ -4,14 +4,15 @@
 \description{
   This function generates a general random portfolio of n investments with k long or short positiobs,
   The probability that a a non-zero investment weight is positive is p.  The maximum absolute
-  exposure for any investment is x.u.  The default value is \eqn{1 / k}.
+  exposure for any investment is x.u.  The default value is \eqn{1}.
 }
 \usage{
-random.general(n = 2, k=n, p = 0.5, x.u = 1/k)
+random.general(n = 2, k=n, segments=NULL, p = 0.5, x.u = 1)
 }
 \arguments{
   \item{n}{ A positive integer value for the number of investments in the portfolio }
   \item{k}{ A positive integer value for the number of non-zero positions }
+  \item{segments}{ A vector or list of vectors that defines the portfolio segments }
   \item{p}{ A positive numeric value for the probability that an investment weight is positive }
   \item{x.u}{ A positive numeric value for the maximum absolute exposure to an investment }
 }
@@ -30,7 +31,7 @@ random.general(n = 2, k=n, p = 0.5, x.u = 1/k)
 \value{
   An \eqn{n \times 1} numeric vector of investment weights for the equal weighted portfolio.
 }
-\author{ Frederick Novomestky \email{fnovomes@poly.edu} }
+\author{ Frederick Novomestky \email{fn334@nyu.edu} }
 \examples{
 ###
 ### long only portfolio of 30 investments with 30 non zero positions

@@ -1,4 +1,4 @@
-requal <- function( m, n=2, k, x.t=1 )
+requal <- function( m, n=2, k=n, x.t=1 )
 {
 ###
 ### This function generates m long only random portfolios with k investments where
@@ -8,6 +8,7 @@ requal <- function( m, n=2, k, x.t=1 )
 ### m = a positive integer value for the number of portfolios to be generated
 ### n = a positive integer value for the number of investments in a portfolio
 ### k = a positive integer value for the number of non zero investments
+### x.t = the sum of the investment weights
 ###
 ### private function
 ###
@@ -19,5 +20,8 @@ requal <- function( m, n=2, k, x.t=1 )
 ### validate arguments
 ###
     weights <- t( sapply( 1:m, by.case, n, k, x.t ) )
+    if ( n == 1 ) {
+        weights <- t( weights )
+    }    
     return( weights )
 }

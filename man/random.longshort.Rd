@@ -8,12 +8,13 @@
   in the portfolio.
 }
 \usage{
-random.longshort(n = 2, k = n, x.t.long = 1, x.t.short = x.t.long, 
+random.longshort(n = 2, k = n, segments = NULL, x.t.long = 1, x.t.short = x.t.long, 
 max.iter = 2000, eps = 0.001)
 }
 \arguments{
   \item{n}{ A positive integer value for the number of investments in the portfolio }
-  \item{k}{ A positive integer value for the number of non zero positions }
+  \item{k}{ A positive integer value for the number of non zero weights }
+  \item{segments}{ A vector or list of vectors that defines the portfolio segments }
   \item{x.t.long}{ A positive real value for the sum of the long exposures  }
   \item{x.t.short}{ A positive real value for the sum of the absolute value of the short exposures }
   \item{max.iter}{ A positive integer value for the maximum iterations in the acceptance rejection method }
@@ -43,7 +44,7 @@ Jacobs, B. I., K. N. Levy and H. M. Markowitz, 2005. Portfolio Optimization with
 Factors, Scenarios and Realist SHort Positions, \emph{Operations Research}, July/August 2005,
 586-599.
 }
-\author{ Frederick Novomestky \email{fnovomes@poly.edu} }
+\author{ Frederick Novomestky \email{fn334@nyu.edu} }
 \seealso{ 
   \code{\link{random.longonly}},
   \code{\link{random.shortonly}}

@@ -8,19 +8,20 @@
   positions is k.
 }
 \usage{
-random.longonly(n = 2, k=n, x.t = 1, x.l=0, 
+random.longonly(n = 2, k = n, segments = NULL, x.t = 1, x.l=0, 
 x.u = x.t, max.iter = 1000)
 }
 \arguments{
   \item{n}{ An integer value for the number of investments in the portfolio }
   \item{k}{ An integer value for the number of non zero weights }
+  \item{segments}{ A vector or list of vectors that defines the portfolio segments }
   \item{x.t}{ Numeric value for the sum of the investment weights }
   \item{x.l}{ Numeric value for the lower bound on an investment weight }
   \item{x.u}{ Numeric value for the upper bound on an investment weight }
   \item{max.iter}{ An integer value for the maximum iteration in the acceptance rejection loop }
 }
 \details{
-  The simulation methods combines the acceptance rejection method used for generating
+  The simulation method combines the acceptance rejection method used for generating
   gamma and gaussian random variables with a continuous analog of the method used in
   Ross (2006) to generate a vector of multinomial random variables.  \eqn{n - 1} random variables
   are constructed where the first \eqn{U_1} is uniformly distributed in the interval \eqn{\left[ X_l, X_t \right]}.
@@ -31,7 +32,7 @@ x.u = x.t, max.iter = 1000)
   if \eqn{X_t  - \sum\limits_{j = 1}^{n - 1} {U_j }} is less than or equal to \eqn{X_u}, then the final random variable is 
   \eqn{U_n  = X_t  - \sum\limits_{j = 1}^{n - 1} {U_j }}. Otherwise, the above procedure of
   generating uniform random variables conditionally is repeated until this condition is satisfied.
-  The vector  \eqn{{\mathbf{W}}} is a random sample of size \eqn{n} of the values in vector \eqn{{\mathbf{U}}}
+  The vector  \eqn{{\mathbf{W}}} is a random sample of size \eqn{n} of the values in vector \eqn{{\mathbf{X}}}
   where the sampling is performed without replacement.
 }
 \value{
@@ -52,7 +53,7 @@ Ross, S. M. (2006). \emph{Simulation}, Fourth Edition, Academic Press, New York 
 Tadikamalla, P. R., (1978). Computer generation of gamma random variables - II, {Communications
 of the ACM}, 21 (11), November 1978, 925-928.
 }
-\author{ Frederick Novomestky \email{fnovomes@poly.edu} }
+\author{ Frederick Novomestky \email{fn334@nyu.edu} }
 \examples{
 ###
 ### long only portfolio of 30 investments with 30 non-zero positions

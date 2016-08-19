@@ -7,11 +7,12 @@
   The function is used to evaluate the performance of the portfolio generation algorithm.
 }
 \usage{
-random.equal.test(n = 2, k, x.t = 1)
+random.equal.test(n = 2, k = n, segments = NULL, x.t = 1)
 }
 \arguments{
   \item{n}{ A positive integer for the number of investments in the portfolio }
   \item{k}{ A positive integer for the number of investments with positive equal weights }
+  \item{segments}{ A vector or list of vectors that defines the portfolio segments }
   \item{x.t}{ The sum of the investment weights }
 }
 \details{
@@ -55,7 +56,7 @@ Benjelloun, H. and Siddiqi, 2006. Direct diversification with small stock portfo
 Benjelloun, H., 2010. Evans and Archer - forty years later, \emph{Investment Management and
 Financial Innovation}, 7(1), 98-104.
 }
-\author{ Frederick Novomestky \email{fnovomes@poly.edu} }
+\author{ Frederick Novomestky \email{fn334@nyu.edu} }
 \examples{
 ###
 ### equally weighted portfolio of 30 investments of which 5 are non-zero and

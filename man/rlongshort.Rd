@@ -7,17 +7,21 @@
   There are k non-zero positions in the portfolio.
 }
 \usage{
-rlongshort(m, n = 2, k = n, x.t.long = 1, x.t.short = x.t.long, 
+rlongshort(m, n = 2, k = n, segments = NULL, x.t.long = 1, x.t.short = x.t.long, 
 max.iter = 2000, eps = 0.001)
 }
 \arguments{
   \item{m}{ A positive integer value for the number of portfolios generated }
   \item{n}{ A positive integer value for the number of investments in the portfolio }
-  \item{k}{ A positive integer value for the number of non zero positions }
+  \item{k}{ A positive integer value for the number of non zero weights }
+  \item{segments}{ A vector or list of vectors that defines the portfolio segments }
   \item{x.t.long}{ A positive real value for the sum of the long exposures  }
   \item{x.t.short}{ A positive real value for the sum of the absolute value of the short exposures }
   \item{max.iter}{ A positive integer value for the maximum iterations in the acceptance rejection method }
   \item{eps}{ A small positive real value for the convergence criteria for the gross notional exposure }
+}
+\details{
+  The arguments \code{x.t}, \code{x.t.long} and \code{x.t.short} are proportions of total invested capital.
 }
 \value{
   An \eqn{m \times n} numeric matrix of investment weights for the long short portfolios
@@ -30,7 +34,7 @@ Jacobs, B. I., K. N. Levy and H. M. Markowitz, 2005. Portfolio Optimization with
 Factors, Scenarios and Realist SHort Positions, \emph{Operations Research}, July/August 2005,
 586-599.
 }
-\author{ Frederick Novomestky \email{fnovomes@poly.edu} }
+\author{ Frederick Novomestky \email{fn334@nyu.edu} }
 \seealso{ 
   \code{\link{random.longshort}}
 }
